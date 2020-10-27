@@ -17,3 +17,23 @@ decompress <- function(compressed, size) {
     .Call(`_XalUtil_decompress`, compressed, size)
 }
 
+#' Compresses an array to one-hot vector
+#'
+#' @param Input array
+#' @param Array row count
+#' @param Array column count
+#' @return A compressed vector
+compress_block <- function(onehot, rows, cols) {
+    .Call(`_XalUtil_compress_block`, onehot, rows, cols)
+}
+
+#' Decompresses an array to one-hot vector
+#'
+#' @param Input array
+#' @param Array row count
+#' @param Array column count
+#' @return A decompressed array
+decompress_block <- function(onehot, rows, cols) {
+    .Call(`_XalUtil_decompress_block`, onehot, rows, cols)
+}
+
