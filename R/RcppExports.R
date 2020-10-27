@@ -5,15 +5,15 @@
 #'
 #' @param A vector of one-hot values, maximum size 8 elements
 #' @return A compressed integer
-oh_compress <- function(onehot) {
-    .Call('_XalUtil_oh_compress', PACKAGE = 'XalUtil', onehot)
+compress <- function(onehot) {
+    .Call(`_XalUtil_compress`, onehot)
 }
 
 #' Decompresses an integer to one-hot vector
 #'
 #' @param An integer (<8 bits wide) to decompress
 #' @return A one-hot vector
-oh_decompress <- function(compressed, size) {
-    .Call('_XalUtil_oh_decompress', PACKAGE = 'XalUtil', compressed, size)
+decompress <- function(compressed, size) {
+    .Call(`_XalUtil_decompress`, compressed, size)
 }
 

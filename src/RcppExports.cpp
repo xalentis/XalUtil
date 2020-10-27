@@ -5,33 +5,33 @@
 
 using namespace Rcpp;
 
-// oh_compress
-int oh_compress(NumericVector onehot);
-RcppExport SEXP _XalUtil_oh_compress(SEXP onehotSEXP) {
+// compress
+int compress(NumericVector onehot);
+RcppExport SEXP _XalUtil_compress(SEXP onehotSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type onehot(onehotSEXP);
-    rcpp_result_gen = Rcpp::wrap(oh_compress(onehot));
+    rcpp_result_gen = Rcpp::wrap(compress(onehot));
     return rcpp_result_gen;
 END_RCPP
 }
-// oh_decompress
-NumericVector oh_decompress(int compressed, int size);
-RcppExport SEXP _XalUtil_oh_decompress(SEXP compressedSEXP, SEXP sizeSEXP) {
+// decompress
+NumericVector decompress(int compressed, int size);
+RcppExport SEXP _XalUtil_decompress(SEXP compressedSEXP, SEXP sizeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< int >::type compressed(compressedSEXP);
     Rcpp::traits::input_parameter< int >::type size(sizeSEXP);
-    rcpp_result_gen = Rcpp::wrap(oh_decompress(compressed, size));
+    rcpp_result_gen = Rcpp::wrap(decompress(compressed, size));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_XalUtil_oh_compress", (DL_FUNC) &_XalUtil_oh_compress, 1},
-    {"_XalUtil_oh_decompress", (DL_FUNC) &_XalUtil_oh_decompress, 2},
+    {"_XalUtil_compress", (DL_FUNC) &_XalUtil_compress, 1},
+    {"_XalUtil_decompress", (DL_FUNC) &_XalUtil_decompress, 2},
     {NULL, NULL, 0}
 };
 

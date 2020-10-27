@@ -1,12 +1,14 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+
+
 //' Compresses a one-hot vector
 //'
 //' @param A vector of one-hot values, maximum size 8 elements
 //' @return A compressed integer
 // [[Rcpp::export]]
-int oh_compress(NumericVector onehot) {
+int compress(NumericVector onehot) {
   int result = 0;
   int elements = onehot.size();
   if (elements > 8)
@@ -18,7 +20,7 @@ int oh_compress(NumericVector onehot) {
   {
     if (onehot[i] == 1) ((result) |= (1ULL<<(elements-1-i)));
   }
-  
+
   return result;
 }
 
@@ -27,13 +29,13 @@ int oh_compress(NumericVector onehot) {
 //' @param An integer (<8 bits wide) to decompress
 //' @return A one-hot vector
 // [[Rcpp::export]]
-NumericVector oh_decompress(int compressed, int size) {
+NumericVector decompress(int compressed, int size) {
   NumericVector result (size);
-  
+
   for (int i=0; i<=size;i++)
   {
     result[size-i-1]=(!!((compressed) & (1ULL<<(i))));
   }
-  
+
   return result;
 }
